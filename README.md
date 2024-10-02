@@ -23,6 +23,7 @@ yarn add animated-drawer-navigation
   - `label: string`
   - `children: NavigationType`
 - `onLeafClick: (leaf: NavigationType) => void`: callback function returning a node of type `NavigationType` when leaf is clicked (e.g. you can use it to navigate to a new page)
+- <i>SOON: support for changing column background and font colors, using custom fonts, animation speed control and navigation click statistics use case</i>
 
 ## Examples
 
