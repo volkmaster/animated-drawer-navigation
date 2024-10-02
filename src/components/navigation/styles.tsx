@@ -1,6 +1,5 @@
 import styled, { keyframes, DefaultTheme } from "styled-components"
 import { lighten } from "polished"
-
 import { when, eq } from "../../utils"
 import { ANIMATION_TIME_FACTOR } from "../../constants"
 

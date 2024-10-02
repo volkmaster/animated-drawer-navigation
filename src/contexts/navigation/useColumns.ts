@@ -1,6 +1,5 @@
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useMemo, useEffect, useCallback, useRef } from "react"
 import pickBy from "lodash.pickby"
-
 import { ANIMATION_TIME_FACTOR } from "../../constants"
 import { NavigationType, IdToNodeMapType, PathToLeafMapType } from "."
 
@@ -27,7 +26,7 @@ interface Props {
   incrementStatistics: (id: string) => void
   idToNodeMap: IdToNodeMapType
   pathToLeafMap: PathToLeafMapType
-  setSelected: (id: string | null) => void
+  onLeafClick: (leaf: NavigationType) => void
 }
 
 const useColumns = ({
@@ -35,12 +34,25 @@ const useColumns = ({
   incrementStatistics,
   idToNodeMap,
   pathToLeafMap,
-  setSelected,
+  onLeafClick,
 }: Props) => {
   const [columns, setColumns] = useState<{ [key: number]: ColumnType }>({})
   const [numColumns, setNumColumns] = useState<number>(0)
-  const maxColumns: number = 5 // TODO: calculate
-  const [leaf, setLeaf] = useState<string | null>(null)
+  const maxColumns = useMemo(() => {
+    const findMaxDepth = (node: NavigationType): number => {
+      // leaf node
+      if (!node.children || node.children.length === 0) {
+        return 1
+      }
+
+      // calculate the depth for each child and take the max
+      const childDepths = node.children.map(findMaxDepth)
+      return Math.max(...childDepths) + 1
+    }
+
+    return navigation ? findMaxDepth(navigation) : 0
+  }, [navigation])
+  const [leaf, setLeaf] = useState<string>("")
 
   const getColumnState = useCallback(
     (index: number): string => {
@@ -122,8 +134,7 @@ const useColumns = ({
 
         incrementStatistics(id)
 
-        // TODO: maybe send callback like onLeafClick
-        setSelected(id)
+        onLeafClick(node)
       }
     },
     [
@@ -134,7 +145,6 @@ const useColumns = ({
       fromWideToHidden,
       fromWideToNarrow,
       incrementStatistics,
-      setSelected,
     ],
   )
 
@@ -172,27 +182,23 @@ const useColumns = ({
 
   const resetColumns = useCallback(() => {
     if (navigation) {
-      setColumns(
-        [...Array(maxColumns)].reduce(
-          (acc, _, i) =>
-            Object.assign(acc, {
-              [i]: {
-                id: "",
-                label: i === 0 ? navigation.label : "",
-                children: i === 0 ? navigation.children : [],
-                states: {
-                  hideWiden: false,
-                  widenHide: false,
-                  hideNarrow: false,
-                  narrowHide: i === 0 && !leaf,
-                  widenNarrow: false,
-                  narrowWiden: false,
-                },
-              },
-            }),
-          {},
-        ),
-      )
+      const columns = {}
+      for (let i = 0; i < maxColumns; i++) {
+        columns[i] = {
+          id: "",
+          label: i === 0 ? "The Known World" : "",
+          children: i === 0 ? navigation.children : [],
+          states: {
+            hideWiden: false,
+            widenHide: false,
+            hideNarrow: false,
+            narrowHide: i === 0 && !leaf,
+            widenNarrow: false,
+            narrowWiden: false,
+          },
+        }
+      }
+      setColumns(columns)
     }
   }, [navigation, leaf])
 
@@ -216,7 +222,7 @@ const useColumns = ({
 
   const hasNavigationBeenExpanded = useRef(false)
   useEffect(() => {
-    if (!hasNavigationBeenExpanded.current && columns && !leaf) {
+    if (!hasNavigationBeenExpanded.current && Object.keys(columns).length > 0 && !leaf) {
       expandNavigation()
       hasNavigationBeenExpanded.current = true
     }

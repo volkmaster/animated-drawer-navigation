@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useMemo, useEffect, useCallback } from "react"
-
 import useColumns, { ColumnType } from "./useColumns"
 import useLocalStorage from "../../hooks/useLocalStorage"
 
@@ -20,7 +19,7 @@ export interface IdToNodeMapType {
 }
 
 export interface IdToParentMapType {
-  [key: string]: string | null
+  [key: string]: string
 }
 
 export interface PathToLeafMapType {
@@ -44,10 +43,8 @@ interface NavigationContextType {
   expandNavigation: (id: string) => void
   hideAllColumns: () => void
   applyPathFromLeaf: (id: string) => void
-  leaf: string | null
+  leaf: string
   setLeaf: (id: string) => void
-  selected: string | null
-  setSelected: (id: string | null) => void
 }
 
 const NavigationContext = createContext<NavigationContextType>({
@@ -67,27 +64,25 @@ const NavigationContext = createContext<NavigationContextType>({
   expandNavigation: () => {},
   hideAllColumns: () => {},
   applyPathFromLeaf: () => {},
-  leaf: null,
+  leaf: "",
   setLeaf: () => {},
-  selected: null,
-  setSelected: () => {},
 })
 
 interface Props {
   navigation: NavigationType | null
+  onLeafClick: (leaf: NavigationType) => void
   children: React.ReactNode
 }
 
-const NavigationProvider = ({ navigation, children }: Props) => {
+const NavigationProvider = ({ navigation, onLeafClick, children }: Props) => {
   const storage = useLocalStorage()
 
   const [statistics, setStatistics] = useState<StatisticsType>({})
   const [idToNodeMap, setIdToNodeMap] = useState<IdToNodeMapType>({})
   const [idToParentMap, setIdToParentMap] = useState<IdToParentMapType>({})
   const [pathToLeafMap, setPathToLeafMap] = useState<PathToLeafMapType>({})
-  const [selected, setSelected] = useState<string | null>(null)
 
-  const buildNavigationMaps = useCallback((parent: string | null, node: NavigationType) => {
+  const buildNavigationMaps = useCallback((parent: string, node: NavigationType) => {
     const { id, children } = node
 
     if (id) {
@@ -102,7 +97,7 @@ const NavigationProvider = ({ navigation, children }: Props) => {
 
   useEffect(() => {
     if (navigation) {
-      buildNavigationMaps(null, navigation)
+      buildNavigationMaps("", navigation)
     }
   }, [navigation, buildNavigationMaps])
 
@@ -110,8 +105,8 @@ const NavigationProvider = ({ navigation, children }: Props) => {
     if (Object.keys(idToParentMap).length > 0) {
       for (const id in idToParentMap) {
         const path: string[] = []
-        let parent: string | null = id
-        while (parent !== null) {
+        let parent: string = id
+        while (parent !== "") {
           path.push(parent)
           parent = idToParentMap[parent]
         }
@@ -172,7 +167,7 @@ const NavigationProvider = ({ navigation, children }: Props) => {
     incrementStatistics,
     idToNodeMap,
     pathToLeafMap,
-    setSelected,
+    onLeafClick,
   })
 
   const value = useMemo<NavigationContextType>(
@@ -195,8 +190,6 @@ const NavigationProvider = ({ navigation, children }: Props) => {
       applyPathFromLeaf,
       leaf,
       setLeaf,
-      selected,
-      setSelected,
     }),
     [
       navigation,
@@ -217,8 +210,6 @@ const NavigationProvider = ({ navigation, children }: Props) => {
       applyPathFromLeaf,
       leaf,
       setLeaf,
-      selected,
-      setSelected,
     ],
   )
 

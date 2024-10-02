@@ -1,5 +1,7 @@
-const NAVIGATION = {
-  id: null,
+import { NavigationType } from "animated-drawer-navigation"
+
+const NAVIGATION: NavigationType = {
+  id: "",
   label: "The Known World",
   children: [
     {

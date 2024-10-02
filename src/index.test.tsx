@@ -1,7 +1,7 @@
-import NavigationComponent from "./components/navigation"
+import Navigation from "./components/navigation"
 
-describe("NavigationComponent", () => {
+describe("Navigation", () => {
   it("is truthy", () => {
-    expect(NavigationComponent).toBeTruthy()
+    expect(Navigation).toBeTruthy()
   })
 })

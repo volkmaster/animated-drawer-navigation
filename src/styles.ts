@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components"
 
 const GlobalStyles = createGlobalStyle`
   *,
@@ -19,11 +19,6 @@ const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     background-color: #fff;
   }
-`
-
-export const Wrapper = styled.div`
-  min-height: 100vh;
-  display: flex;
 `
 
 export default GlobalStyles
