@@ -2507,7 +2507,7 @@ ajv@^8.0.0, ajv@^8.6.0, ajv@^8.9.0:
     json-schema-traverse "^1.0.0"
     require-from-string "^2.0.2"
 
-"animated-drawer-navigation@link:../dist":
+"animated-drawer-navigation@link:../node_modules/animated-drawer-navigation":
   version "0.0.0"
   uid ""
 

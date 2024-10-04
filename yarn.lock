@@ -2684,10 +2684,12 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha512-0FcBfdcmaumGPQ0qPn7Q5qTgz/ooXgIyp1rf8ik5bGX8mpE2YHjC0P/eyQvxu1GURYQgq9ozf2mteQ5ZD9YiyQ==
 
-animated-drawer-navigation@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/animated-drawer-navigation/-/animated-drawer-navigation-1.0.3.tgz#a6aecbb44b2c477efd8d5e75ac1b848082df8bd8"
-  integrity sha512-zGQN7+Bdj0Vx0j46XduyGgL++HDJYfl4dcAiBojBSps31slOkiLONgwOlxtvQ0AhSoNV62/tLMfDfJXQ5dddBA==
+animated-drawer-navigation@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/animated-drawer-navigation/-/animated-drawer-navigation-1.0.4.tgz#16ba67af8f45fdcce14adf983bd0144c94f9c8f7"
+  integrity sha512-eJOR9Z9J+3cH7b9qqee9D1amhdj63KmqLiiVmpNSpkPDfPtczj4RBHlC5+FvAzh6ZtW+05RWPeLmZJD9WKs3fA==
+  dependencies:
+    "@babel/plugin-proposal-unicode-property-regex" "^7.18.6"
 
 ansi-escapes@^4.2.1, ansi-escapes@^4.3.1:
   version "4.3.2"
