@@ -1,10 +1,18 @@
 {
   "files": {
-    "main.js": "./static/js/main.4e5b64a4.js",
+    "main.css": "./static/css/main.fa9c2c81.css",
+    "main.js": "./static/js/main.59a8832c.js",
+    "static/media/Proxima-Nova-Regular.svg": "./static/media/Proxima-Nova-Regular.8f64c43ac338ee6d036b.svg",
+    "static/media/Proxima-Nova-Regular.eot": "./static/media/Proxima-Nova-Regular.c23787c599b4dd817042.eot",
+    "static/media/Proxima-Nova-Regular.ttf": "./static/media/Proxima-Nova-Regular.db098dc77c7aafe660e5.ttf",
+    "static/media/Proxima-Nova-Regular.woff": "./static/media/Proxima-Nova-Regular.3d59ce3e9d6f49acb285.woff",
+    "static/media/Proxima-Nova-Regular.woff2": "./static/media/Proxima-Nova-Regular.c4c3616c5577f9e7ef87.woff2",
     "index.html": "./index.html",
-    "main.4e5b64a4.js.map": "./static/js/main.4e5b64a4.js.map"
+    "main.fa9c2c81.css.map": "./static/css/main.fa9c2c81.css.map",
+    "main.59a8832c.js.map": "./static/js/main.59a8832c.js.map"
   },
   "entrypoints": [
-    "static/js/main.4e5b64a4.js"
+    "static/css/main.fa9c2c81.css",
+    "static/js/main.59a8832c.js"
   ]
 }
