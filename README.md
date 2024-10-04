@@ -1,37 +1,32 @@
 # animated-drawer-navigation
 
-> An animated multi-level drawer navigation
+> An animated multi-level drawer navigation for React.
 
 [![NPM](https://img.shields.io/npm/v/animated-drawer-navigation.svg)](https://www.npmjs.com/package/animated-drawer-navigation) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Installation
 
+### npm
+
 ```bash
 npm install --save animated-drawer-navigation
 ```
 
-or
+### yarn
 
 ```bash
 yarn add animated-drawer-navigation
 ```
 
-## Parameters
-
-- `navigation: NavigationType`: hierarchical object where each node consists of
-  - `id: string`
-  - `label: string`
-  - `children: NavigationType`
-- `onLeafClick: (leaf: NavigationType) => void`: callback function returning a node of type `NavigationType` when leaf is clicked (e.g. you can use it to navigate to a new page)
-- <i>SOON: support for changing column background and font colors, using custom fonts, animation speed control and navigation click statistics use case</i>
-
 ## Examples
 
-<img src="https://i.imgur.com/hMUSc8E.png" alt="Example" width="800px"/>
+Check out a live demo here: https://volkmaster.github.io/animated-drawer-navigation/
+
+<img src="https://i.imgur.com/COjibf0.png" alt="Example" width="800px"/>
 
 ### React
 
-(for more information check out the code in the `example` folder)
+For more information check out the code in the `example` folder.
 
 ```tsx
 import React, { useState } from "react"
@@ -60,26 +55,6 @@ const exampleNavigation: NavigationType = {
                   children: [],
                 },
                 {
-                  id: "4",
-                  label: "Catelyn Stark",
-                  children: [],
-                },
-                {
-                  id: "5",
-                  label: "Sansa Stark",
-                  children: [],
-                },
-                {
-                  id: "6",
-                  label: "Arya Stark",
-                  children: [],
-                },
-                {
-                  id: "7",
-                  label: "Bran Stark",
-                  children: [],
-                },
-                {
                   id: "8",
                   label: "Jon Snow",
                   children: [],
@@ -87,11 +62,6 @@ const exampleNavigation: NavigationType = {
                 {
                   id: "9",
                   label: "Robb Stark",
-                  children: [],
-                },
-                {
-                  id: "10",
-                  label: "Rickon Stark",
                   children: [],
                 },
               ],
@@ -107,11 +77,6 @@ const exampleNavigation: NavigationType = {
               label: "House Lannister",
               children: [
                 {
-                  id: "45",
-                  label: "Tywin Lannister",
-                  children: [],
-                },
-                {
                   id: "46",
                   label: "Cersei Lannister",
                   children: [],
@@ -119,11 +84,6 @@ const exampleNavigation: NavigationType = {
                 {
                   id: "47",
                   label: "Jaime Lannister",
-                  children: [],
-                },
-                {
-                  id: "48",
-                  label: "Tyrion Lannister",
                   children: [],
                 },
               ],
@@ -154,11 +114,6 @@ const exampleNavigation: NavigationType = {
                   label: "Viserys Targaryen",
                   children: [],
                 },
-                {
-                  id: "130",
-                  label: "Aemon Targaryen",
-                  children: [],
-                },
               ],
             },
           ],
@@ -174,11 +129,6 @@ const exampleNavigation: NavigationType = {
                 {
                   id: "133",
                   label: "Drogo",
-                  children: [],
-                },
-                {
-                  id: "134",
-                  label: "Rakharo",
                   children: [],
                 },
               ],
@@ -222,6 +172,41 @@ const Content = styled.div`
 
 export default Example
 ```
+
+## Documentation
+
+```tsx
+<Navigation
+  navigation={exampleNavigation}
+  onLeafClick={onLeafClick}
+  backgroundColorPaletter={["gray", "yellow", "green"]}
+  fontColorPalette={["black", "black", "white"]}
+  animationSpeedMultiplier={1.5}
+/>
+```
+
+- `navigation: NavigationType`: hierarchical object where each node has the following properties:
+
+  - `id: string`: unique identifier (all nodes should have a unique string `id`, except for the root node whose `id` should be `""` - an empty string)
+  - `label: string`: text that will be displayed in the navigation
+  - `children: NavigationType[]`: array of child navigation nodes
+
+- `onLeafClick: (leaf: NavigationType) => void`: callback function returning a node of type `NavigationType` when leaf is clicked (e.g. you can use it to navigate to a new page)
+
+- `backgroundColorPalette?: string[]`: an array of colors used as column background colors (any format accepted by the CSS `background-color` property)
+
+  - default: `["#1f3c4a", "#798e93", "#b4bfbf", "#dbd5c5", "#f1d7b9", "#f6e1cd", "#e4cbb6", "#c2c1a5", "#9fb7c9", "#6b8572", "#c9c7ba", "#4a5e64"]`
+
+- `fontColorPalette?: string[]`: an array of colors used as column font colors (any format accepted by the CSS `color` property)
+
+  - default: `["#dbd5c5", "#dbd5c5", "#1f3c4a", "#1f3c4a", "#1f3c4a", "#1f3c4a", "#1f3c4a", "#1f3c4a", "#1f3c4a", "#dbd5c5", "#1f3c4a", "#dbd5c5"]`
+
+- `font?: string`: a custom font used in the text of the navigation nodes (value is applied to the `font-family` CSS property)
+
+  - default: `sans-serif`
+
+- `animationSpeedMultiplier?: number`: acts as a multiplier that adjusts how quickly or slowly the column animations are executed (e.g. 0.5 means two times faster; 3 means three times slower)
+  - default: `1`
 
 ## License
 

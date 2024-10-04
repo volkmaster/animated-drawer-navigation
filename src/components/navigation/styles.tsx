@@ -1,36 +1,14 @@
-import styled, { keyframes, DefaultTheme } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 import { lighten } from "polished"
-import { when, eq } from "../../utils"
-import { ANIMATION_TIME_FACTOR } from "../../constants"
 
-const timeColumnStateChange = 0.2 * ANIMATION_TIME_FACTOR
-const timeElementFadeIn = 0.035 * ANIMATION_TIME_FACTOR
+const timeColumnStateChange = 0.2
+const timeElementFadeIn = 0.035
 const timeElementFadeInDelay = timeColumnStateChange - timeElementFadeIn
-const timeElementFadeOut = 0.05 * ANIMATION_TIME_FACTOR
-const timeElementHoverActive = 0.1 * ANIMATION_TIME_FACTOR
+const timeElementFadeOut = 0.05
+const timeElementHoverActive = 0.1
 
 const wideColumnWidth = "185px"
 const narrowColumnWidth = "40px"
-
-const getBackgroundColor = (theme: DefaultTheme, index: number) => {
-  return [
-    theme.colors.darkBlueGray,
-    theme.colors.bluishGray,
-    theme.colors.ashGray,
-    theme.colors.quillGray,
-    theme.colors.doubleSpanishWhite,
-  ][index]
-}
-
-const getFontColor = (theme: DefaultTheme, index: number) => {
-  return [
-    theme.colors.quillGray,
-    theme.colors.quillGray,
-    theme.colors.darkBlueGray,
-    theme.colors.darkBlueGray,
-    theme.colors.darkBlueGray,
-  ][index]
-}
 
 export const Wrapper = styled.div`
   display: flex;
@@ -93,48 +71,64 @@ const narrowWidenColumn = keyframes`
 interface ColumnProps {
   $state: string
   $index: number
-  children: React.ReactNode
+  $backgroundColorPalette: string[]
+  $animationSpeedMultiplier: number
 }
 
 export const Column = styled.div<ColumnProps>`
   display: none;
-  background-color: ${({ theme, $index }: { theme: DefaultTheme; $index: number }) =>
-    getBackgroundColor(theme, $index)};
+  background-color: ${({ $index, $backgroundColorPalette }) => $backgroundColorPalette[$index]};
   overflow-y: auto;
 
-  ${eq("$state", "hideWiden")`
-    padding: 5px;
-    display: block;
-    animation: ${hideWidenColumn} ${timeColumnStateChange}s ease-out forwards;
-  `}
+  ${({ $state, $animationSpeedMultiplier }) =>
+    $state === "hideWiden" &&
+    css`
+      padding: 5px;
+      display: block;
+      animation: ${hideWidenColumn} ${timeColumnStateChange * $animationSpeedMultiplier}s ease-out
+        forwards;
+    `}
 
-  ${eq("$state", "widenHide")`
-    display: block;
-    animation: ${widenHideColumn} ${timeColumnStateChange}s ease-in;
-  `}
+  ${({ $state, $animationSpeedMultiplier }) =>
+    $state === "widenHide" &&
+    css`
+      display: block;
+      animation: ${widenHideColumn} ${timeColumnStateChange * $animationSpeedMultiplier}s ease-in;
+    `}
 
-  ${eq("$state", "hideNarrow")`
-    height: 100%;
-    display: block;
-    animation: ${hideNarrowColumn} ${timeColumnStateChange}s ease-out forwards;
-  `}
+  ${({ $state, $animationSpeedMultiplier }) =>
+    $state === "hideNarrow" &&
+    css`
+      height: 100%;
+      display: block;
+      animation: ${hideNarrowColumn} ${timeColumnStateChange * $animationSpeedMultiplier}s ease-out
+        forwards;
+    `}
 
-  ${eq("$state", "narrowHide")`
-    display: block;
-    animation: ${narrowHideColumn} ${timeColumnStateChange}s ease-in;
-  `}
+  ${({ $state, $animationSpeedMultiplier }) =>
+    $state === "narrowHide" &&
+    css`
+      display: block;
+      animation: ${narrowHideColumn} ${timeColumnStateChange * $animationSpeedMultiplier}s ease-in;
+    `}
 
-  ${eq("$state", "widenNarrow")`
-    height: 100%;
-    display: block;
-    animation: ${widenNarrowColumn} ${timeColumnStateChange}s ease-in forwards;
-  `}
+  ${({ $state, $animationSpeedMultiplier }) =>
+    $state === "widenNarrow" &&
+    css`
+      height: 100%;
+      display: block;
+      animation: ${widenNarrowColumn} ${timeColumnStateChange * $animationSpeedMultiplier}s ease-in
+        forwards;
+    `}
 
-  ${eq("$state", "narrowWiden")`
-    padding: 5px;
-    display: block;
-    animation: ${narrowWidenColumn} ${timeColumnStateChange}s ease-out forwards;
-  `}
+  ${({ $state, $animationSpeedMultiplier }) =>
+    $state === "narrowWiden" &&
+    css`
+      padding: 5px;
+      display: block;
+      animation: ${narrowWidenColumn} ${timeColumnStateChange * $animationSpeedMultiplier}s ease-out
+        forwards;
+    `}
 `
 
 const fadeInElement = keyframes`
@@ -161,71 +155,72 @@ interface ElementProps {
   $wide?: boolean
   $narrow?: boolean
   $active?: boolean
-  children: React.ReactNode
+  $backgroundColorPalette: string[]
+  $fontColorPalette: string[]
+  $font: string
+  $animationSpeedMultiplier: number
 }
 
 export const Element = styled.div<ElementProps>`
-  color: ${({ theme, $index }: { theme: DefaultTheme; $index: number }) =>
-    lighten(0.1, getFontColor(theme, $index))};
+  font-family: ${({ $font }) => $font};
+  color: ${({ $index, $fontColorPalette }) => lighten(0.1, $fontColorPalette[$index])};
   cursor: pointer;
 
-  ${when("$wide")`
-    width: 100%;
-    min-height: 15px;
-    margin-bottom: 6px;
-    padding: 7px;
-    font-size: 14px;
-    line-height: 20px;
-    transition: background-color ${timeElementHoverActive}s linear, font-family ${timeElementHoverActive}s linear;
-  `}
+  ${({ $wide }) =>
+    $wide &&
+    css`
+      width: 100%;
+      min-height: 15px;
+      margin-bottom: 6px;
+      padding: 7px;
+      font-size: 14px;
+      line-height: 20px;
+      transition:
+        background-color ${timeElementHoverActive}s linear,
+        font-family ${timeElementHoverActive}s linear;
+    `}
 
-  ${when("$narrow")`
-    position: absolute;
-    width: 100vh;
-    height: ${narrowColumnWidth};
-    padding: 0 20px 5px 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    transform: rotate(-90deg) translateX(-100%);
-    transform-origin: 0% 0%;
-    font-size: 20px;
-    font-weight: bold;
-  `}
+  ${({ $narrow }) =>
+    $narrow &&
+    css`
+      position: absolute;
+      width: 100vh;
+      height: ${narrowColumnWidth};
+      padding: 0 20px 5px 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      transform: rotate(-90deg) translateX(-100%);
+      transform-origin: 0% 0%;
+      font-size: 20px;
+      font-weight: bold;
+    `}
 
-  ${eq("$state", "hideWiden")`
-    animation: ${fadeInElement} ${timeElementFadeIn}s ease-out ${timeElementFadeInDelay}s;
-    animation-fill-mode: both;
-  `}
+  ${({ $state, $animationSpeedMultiplier }) =>
+    ["hideWiden", "hideNarrow", "narrowWiden"].includes($state) &&
+    css`
+      animation: ${fadeInElement} ${timeElementFadeIn * $animationSpeedMultiplier}s ease-out
+        ${timeElementFadeInDelay * $animationSpeedMultiplier}s both;
+    `}
 
-  ${eq("$state", "hideNarrow")`
-    animation: ${fadeInElement} ${timeElementFadeIn}s ease-out ${timeElementFadeInDelay}s;
-    animation-fill-mode: both;
-  `}
-
-  ${eq("$state", "narrowWiden")`
-    animation: ${fadeInElement} ${timeElementFadeIn}s ease-out ${timeElementFadeInDelay}s;
-    animation-fill-mode: both;
-  `}
-
-  ${eq("$state", "widenHide")`
-    animation: ${fadeOutElement} ${timeElementFadeOut}s ease-in;
-    animation-fill-mode: both;
-  `}
-
-  ${eq("$state", "narrowHide")`
-    animation: ${fadeOutElement} ${timeElementFadeOut}s ease-in;
-    animation-fill-mode: both;
-  `}
+  ${({ $state, $animationSpeedMultiplier }) =>
+    ["widenHide", "narrowHide"].includes($state) &&
+    css`
+      animation: ${fadeOutElement} ${timeElementFadeOut * $animationSpeedMultiplier}s ease-in both;
+    `}
 
   &:hover {
-    ${when("$wide")`
-      background-color: ${({ theme, $index }: { theme: DefaultTheme; $index: number }) => lighten(0.1, getBackgroundColor(theme, $index))};
-    `}
+    ${({ $wide, $backgroundColorPalette, $index }) =>
+      $wide &&
+      css`
+        background-color: ${lighten(0.1, $backgroundColorPalette[$index])};
+      `}
   }
 
-  ${when("$active")`
-    font-weight: bold;
-    background-color: ${({ theme, $index }: { theme: DefaultTheme; $index: number }) => lighten(0.1, getBackgroundColor(theme, $index))};
-  `}
+  ${({ $active, $index, $backgroundColorPalette }) =>
+    $active &&
+    css`
+      font-weight: bold;
+      background-color: ${lighten(0.1, $backgroundColorPalette[$index])};
+    `}
 `

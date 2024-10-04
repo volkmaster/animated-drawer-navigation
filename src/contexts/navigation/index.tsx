@@ -71,10 +71,16 @@ const NavigationContext = createContext<NavigationContextType>({
 interface Props {
   navigation: NavigationType | null
   onLeafClick: (leaf: NavigationType) => void
+  animationSpeedMultiplier: number
   children: React.ReactNode
 }
 
-const NavigationProvider = ({ navigation, onLeafClick, children }: Props) => {
+const NavigationProvider = ({
+  navigation,
+  onLeafClick,
+  animationSpeedMultiplier,
+  children,
+}: Props) => {
   const storage = useLocalStorage()
 
   const [statistics, setStatistics] = useState<StatisticsType>({})
@@ -168,6 +174,7 @@ const NavigationProvider = ({ navigation, onLeafClick, children }: Props) => {
     idToNodeMap,
     pathToLeafMap,
     onLeafClick,
+    animationSpeedMultiplier,
   })
 
   const value = useMemo<NavigationContextType>(

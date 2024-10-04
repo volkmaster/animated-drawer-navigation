@@ -1,9 +1,6 @@
 import { useState, useMemo, useEffect, useCallback, useRef } from "react"
 import pickBy from "lodash.pickby"
-import { ANIMATION_TIME_FACTOR } from "../../constants"
 import { NavigationType, IdToNodeMapType, PathToLeafMapType } from "."
-
-const TIME_COLUMN_STATE_CHANGE = 0.2 * ANIMATION_TIME_FACTOR
 
 interface ColumnStatesType {
   hideWiden?: boolean
@@ -27,6 +24,7 @@ interface Props {
   idToNodeMap: IdToNodeMapType
   pathToLeafMap: PathToLeafMapType
   onLeafClick: (leaf: NavigationType) => void
+  animationSpeedMultiplier: number
 }
 
 const useColumns = ({
@@ -35,6 +33,7 @@ const useColumns = ({
   idToNodeMap,
   pathToLeafMap,
   onLeafClick,
+  animationSpeedMultiplier,
 }: Props) => {
   const [columns, setColumns] = useState<{ [key: number]: ColumnType }>({})
   const [numColumns, setNumColumns] = useState<number>(0)
@@ -53,6 +52,7 @@ const useColumns = ({
     return navigation ? findMaxDepth(navigation) : 0
   }, [navigation])
   const [leaf, setLeaf] = useState<string>("")
+  const timeColumnStateChange = 0.2 * (animationSpeedMultiplier || 1)
 
   const getColumnState = useCallback(
     (index: number): string => {
@@ -76,7 +76,7 @@ const useColumns = ({
     changeColumnStates(index, { hideWiden: false, narrowWiden: false, widenHide: true })
     setTimeout(() => {
       changeColumnStates(index, { widenHide: false })
-    }, TIME_COLUMN_STATE_CHANGE * 1000)
+    }, timeColumnStateChange * 1000)
   }, [])
 
   const fromHiddenToNarrow = useCallback((index: number) => {
@@ -87,7 +87,7 @@ const useColumns = ({
     changeColumnStates(index, { widenNarrow: false, hideNarrow: false, narrowHide: true })
     setTimeout(() => {
       changeColumnStates(index, { narrowHide: false })
-    }, TIME_COLUMN_STATE_CHANGE * 1000)
+    }, timeColumnStateChange * 1000)
   }, [])
 
   const fromWideToNarrow = useCallback((index: number) => {
@@ -175,14 +175,14 @@ const useColumns = ({
         fromHiddenToWide(index + 1)
 
         setNumColumns(index + 2)
-      }, TIME_COLUMN_STATE_CHANGE * 1000)
+      }, timeColumnStateChange * 1000)
     },
     [columns, fromHiddenToWide, fromNarrowToHidden, fromNarrowToWide, fromWideToHidden, numColumns],
   )
 
   const resetColumns = useCallback(() => {
     if (navigation) {
-      const columns = {}
+      const columns: { [key: number]: ColumnType } = {}
       for (let i = 0; i < maxColumns; i++) {
         columns[i] = {
           id: "",

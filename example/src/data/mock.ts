@@ -1,6 +1,6 @@
 import { NavigationType } from "animated-drawer-navigation"
 
-const NAVIGATION: NavigationType = {
+export const NAVIGATION: NavigationType = {
   id: "",
   label: "The Known World",
   children: [
@@ -827,4 +827,168 @@ const NAVIGATION: NavigationType = {
   ],
 }
 
-export default NAVIGATION
+export const CHARACTERS: { [key: string]: { description: string; image?: string } } = {
+  "3": {
+    description: "Warden of the North, head of House Stark, honorable and just.",
+    image: "https://thronesapi.com/assets/images/ned-stark.jpg",
+  },
+  "4": {
+    description: "Wife of Eddard Stark, from House Tully, fiercely protective of her family.",
+    image: "https://thronesapi.com/assets/images/catelyn-stark.jpg",
+  },
+  "5": {
+    description:
+      "Eldest daughter, dreams of being a queen, later grows into a strong political player.",
+    image: "https://thronesapi.com/assets/images/sansa-stark.jpeg",
+  },
+  "6": {
+    description: "Young and rebellious, trains as an assassin, determined to avenge her family.",
+    image: "https://thronesapi.com/assets/images/arya-stark.jpg",
+  },
+  "7": {
+    description: "Youngest son, becomes the Three-Eyed Raven with mystical abilities.",
+    image: "https://thronesapi.com/assets/images/bran-stark.jpg",
+  },
+  "8": {
+    description:
+      "Bastard son of Eddard Stark, raised at Winterfell, later becomes a key figure in the war against the Night King.",
+    image: "https://thronesapi.com/assets/images/jon-snow.jpg",
+  },
+  "9": {
+    description: "Eldest Stark son, King in the North, leads a rebellion after his father's death.",
+    image: "https://thronesapi.com/assets/images/robb-stark.jpg",
+  },
+  "10": {
+    description: "Youngest Stark child, captured and killed during the Battle of the Bastards.",
+    image: "https://thronesapi.com/assets/images/rickon.jpg",
+  },
+  "12": {
+    description: "Warden of the North after betraying Robb Stark, known for his cruelty.",
+    image: "https://thronesapi.com/assets/images/roose-bolton.jpg",
+  },
+  "13": {
+    description: "Sadistic son of Roose Bolton, infamous for torturing Theon Greyjoy.",
+    image: "https://thronesapi.com/assets/images/ramsey-bolton.jpg",
+  },
+  "15": {
+    description: "Lord Commander of the Night's Watch, father to Jorah Mormont.",
+    image: "https://thronesapi.com/assets/images/lord-commander-mormont.jpg",
+  },
+  "16": {
+    description: "Exiled knight, loyal to Daenerys Targaryen, falls in love with her.",
+    image: "https://thronesapi.com/assets/images/jorah-mormont.jpg",
+  },
+  "17": {
+    description: "Young Lady of Bear Island, fiercely loyal to the Starks, known for her bravery.",
+  },
+  "20": {
+    description: "Lord of Riverrun, father of Catelyn Stark, a respected leader in the Riverlands.",
+  },
+  "21": {
+    description: "Catelyn's younger brother, often seen as ineffective but well-meaning.",
+  },
+  "22": {
+    description: "The Blackfish, a skilled warrior and commander, uncle to Catelyn Stark.",
+  },
+  "25": {
+    description: "Lord of the Twins, orchestrator of the Red Wedding, known for his treachery.",
+  },
+  "29": {
+    description: "Former Hand of the King, his death sparks the events of the series.",
+  },
+  "30": {
+    description: "Widow of Jon Arryn, mother of Robin, unstable and obsessed with her son.",
+  },
+  "32": {
+    description: "Sickly and spoiled Lord of the Eyrie, heavily dependent on his mother.",
+  },
+  "45": {
+    description: "Head of House Lannister, ruthless strategist, Hand of the King.",
+    image: "https://thronesapi.com/assets/images/tywin-lannister.jpg",
+  },
+  "46": {
+    description: "Queen, ambitious and fiercely protective of her children, known for her cunning.",
+    image: "https://thronesapi.com/assets/images/cersei.jpg",
+  },
+  "47": {
+    description:
+      "Twin brother of Cersei, known as the Kingslayer, undergoes a complex redemption arc.",
+    image: "https://thronesapi.com/assets/images/jaime-lannister.jpg",
+  },
+  "48": {
+    description:
+      "The dwarf brother, sharp-witted and strategic, often underestimated by his family.",
+    image: "https://thronesapi.com/assets/images/tyrion-lannister.jpg",
+  },
+  "60": {
+    description: "Lord of Highgarden, jovial but not a particularly skilled strategist.",
+  },
+  "61": {
+    description: "The Queen of Thorns, a sharp-tongued political mastermind.",
+    image: "https://thronesapi.com/assets/images/olenna-tyrell.jpg",
+  },
+  "62": {
+    description: "Daughter of Mace, seeks to become Queen of Westeros, manipulative yet charming.",
+    image: "https://thronesapi.com/assets/images/margaery-tyrell.jpg",
+  },
+  "83": {
+    description:
+      "The Red Viper, known for his charisma and combat skills, seeks revenge for his sister's death.",
+    image: "https://thronesapi.com/assets/images/red-viper.jpg",
+  },
+  "84": {
+    description: "Oberyn's paramour, seeks vengeance after his death, mother to the Sand Snakes.",
+    image: "https://thronesapi.com/assets/images/ellaria-sand.jpg",
+  },
+  "86": {
+    description: "Ruler of Dorne, patient and deliberate in his pursuit of justice for his family.",
+  },
+  "99": {
+    description:
+      "The first king after the Targaryens' fall, known for his strength in battle but disinterested in ruling.",
+    image: "https://thronesapi.com/assets/images/robert-baratheon.jpeg",
+  },
+  "100": {
+    description: "Robert's brother, rigid and disciplined, believes he is the rightful king.",
+    image: "https://thronesapi.com/assets/images/stannis.jpg",
+  },
+  "101": {
+    description:
+      "Youngest Baratheon brother, charismatic and popular, rival claimant to the throne.",
+  },
+  "116": {
+    description: "Lord of the Iron Islands, leads a failed rebellion against the Iron Throne.",
+  },
+  "117": {
+    description:
+      "Balon's son, raised as a ward of the Starks, later struggles with loyalty and identity.",
+    image: "https://thronesapi.com/assets/images/theon.jpg",
+  },
+  "118": {
+    description: "Theon's sister, a fierce warrior and leader of the Ironborn.",
+    image: "https://thronesapi.com/assets/images/yara-greyjoy.jpg",
+  },
+  "128": {
+    description:
+      "The last surviving Targaryen, mother of dragons, seeks to reclaim the Iron Throne.",
+    image: "https://thronesapi.com/assets/images/daenerys.jpg",
+  },
+  "129": {
+    description:
+      "Daenerys's brother, driven by a desire to reclaim the throne, but blinded by ambition.",
+    image: "https://thronesapi.com/assets/images/viserys-targaryan.jpg",
+  },
+  "130": {
+    description:
+      "A Maester of the Night's Watch, wise and compassionate, reveals his Targaryen lineage later.",
+  },
+  "133": {
+    description:
+      "A powerful Dothraki Khal, husband of Daenerys, known for his fearsome reputation in battle.",
+    image: "https://thronesapi.com/assets/images/khal-drogo.jpg",
+  },
+  "140": {
+    description: "A Faceless Man, mysterious and skilled in the art of assassination.",
+    image: "https://thronesapi.com/assets/images/jaqen-hghar.jpg",
+  },
+}
