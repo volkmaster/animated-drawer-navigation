@@ -23,7 +23,7 @@ interface Props {
   incrementStatistics: (id: string) => void
   idToNodeMap: IdToNodeMapType
   pathToLeafMap: PathToLeafMapType
-  onLeafClick: (leaf: NavigationType) => void
+  onLeafNodeClick: (node: NavigationType) => void
   animationSpeedMultiplier: number
 }
 
@@ -32,7 +32,7 @@ const useColumns = ({
   incrementStatistics,
   idToNodeMap,
   pathToLeafMap,
-  onLeafClick,
+  onLeafNodeClick,
   animationSpeedMultiplier,
 }: Props) => {
   const [columns, setColumns] = useState<{ [key: number]: ColumnType }>({})
@@ -107,7 +107,7 @@ const useColumns = ({
         [index]: { ...prev[index], ...node },
       }))
 
-      if (children.length > 0) {
+      if (children && children.length > 0) {
         if (index >= 2) {
           // previous: narrow <- wide
           fromWideToNarrow(index - 1)
@@ -134,7 +134,7 @@ const useColumns = ({
 
         incrementStatistics(id)
 
-        onLeafClick(node)
+        onLeafNodeClick(node)
       }
     },
     [
@@ -187,7 +187,7 @@ const useColumns = ({
         columns[i] = {
           id: "",
           label: i === 0 ? "The Known World" : "",
-          children: i === 0 ? navigation.children : [],
+          children: i === 0 ? navigation.children || [] : [],
           states: {
             hideWiden: false,
             widenHide: false,

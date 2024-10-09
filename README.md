@@ -31,9 +31,13 @@ For more information check out the code in the `example` folder.
 ```tsx
 import React, { useState } from "react"
 import styled from "styled-components"
-import AnimatedDrawerNavigation, { NavigationType } from "animated-drawer-navigation"
+import {
+  AnimatedDrawerNavigationProvider,
+  AnimatedDrawerNavigation,
+  AnimatedDrawerNavigationType,
+} from "animated-drawer-navigation"
 
-const exampleNavigation: NavigationType = {
+const exampleNavigation: AnimatedDrawerNavigationType = {
   id: "",
   label: "The Known World",
   children: [
@@ -52,17 +56,17 @@ const exampleNavigation: NavigationType = {
                 {
                   id: "3",
                   label: "Eddard Stark",
-                  children: [],
+                  extra: { route: "eddard-stark" },
                 },
                 {
                   id: "8",
                   label: "Jon Snow",
-                  children: [],
+                  extra: { route: "jon-snow" },
                 },
                 {
                   id: "9",
                   label: "Robb Stark",
-                  children: [],
+                  extra: { route: "rob-stark" },
                 },
               ],
             },
@@ -79,12 +83,12 @@ const exampleNavigation: NavigationType = {
                 {
                   id: "46",
                   label: "Cersei Lannister",
-                  children: [],
+                  extra: { route: "cersei-lannister" },
                 },
                 {
                   id: "47",
                   label: "Jaime Lannister",
-                  children: [],
+                  extra: { route: "jaime-lannister" },
                 },
               ],
             },
@@ -107,12 +111,12 @@ const exampleNavigation: NavigationType = {
                 {
                   id: "128",
                   label: "Daenerys Targaryen",
-                  children: [],
+                  extra: { route: "daenerys-targaryen" },
                 },
                 {
                   id: "129",
                   label: "Viserys Targaryen",
-                  children: [],
+                  extra: { route: "viserys-targaryen" },
                 },
               ],
             },
@@ -129,7 +133,7 @@ const exampleNavigation: NavigationType = {
                 {
                   id: "133",
                   label: "Drogo",
-                  children: [],
+                  extra: { route: "drogo" },
                 },
               ],
             },
@@ -141,23 +145,29 @@ const exampleNavigation: NavigationType = {
 }
 
 const Example = () => {
-  const [leaf, setLeaf] = useState<NavigationType | null>(null)
-  const onLeafClick = (leaf: NavigationType) => {
-    setLeaf(leaf)
+  const [leafNode, setLeafNode] = useState<AnimatedDrawerNavigationType | null>(null)
+  const onLeafNodeClick = (node: AnimatedDrawerNavigationType) => {
+    setLeafNode(node)
+    // or navigate to a new route
   }
 
   return (
-    <Wrapper>
-      <AnimatedDrawerNavigation navigation={exampleNavigation} onLeafClick={onLeafClick} />
-      <Content>
-        <h1>Game of Thrones</h1>
-        {leaf && (
-          <h3>
-            {leaf.id} | {leaf.label}
-          </h3>
-        )}
-      </Content>
-    </Wrapper>
+    <AnimatedDrawerNavigationProvider
+      navigation={exampleNavigation}
+      onLeafNodeClick={onLeafNodeClick}
+    >
+      <Wrapper>
+        <AnimatedDrawerNavigation />
+        <div>
+          <h1>Game of Thrones</h1>
+          {leafNode && (
+            <h3>
+              {leafNode.id} | {leafNode.label}
+            </h3>
+          )}
+        </div>
+      </Wrapper>
+    </AnimatedDrawerNavigationProvider>
   )
 }
 
@@ -166,21 +176,15 @@ const Wrapper = styled.div`
   display: flex;
 `
 
-const Content = styled.div`
-  padding: 0 15px;
-`
-
 export default Example
 ```
 
 ## Documentation
 
 ```tsx
-<Navigation
+<AnimatedDrawerNavigationProvider
   navigation={exampleNavigation}
-  onLeafClick={onLeafClick}
-  backgroundColorPaletter={["gray", "yellow", "green"]}
-  fontColorPalette={["black", "black", "white"]}
+  onLeafNodeClick={onLeafNodeClick}
   animationSpeedMultiplier={1.5}
 />
 ```
@@ -189,9 +193,21 @@ export default Example
 
   - `id: string`: unique identifier (all nodes should have a unique string `id`, except for the root node whose `id` should be `""` - an empty string)
   - `label: string`: text that will be displayed in the navigation
-  - `children: NavigationType[]`: array of child navigation nodes
+  - `extra?: any`: any additional node data you want to use on leaf node clicks (e.g. `{ route: "jon-snow" }`)
+  - `children?: NavigationType[]`: array of child navigation nodes
 
-- `onLeafClick: (leaf: NavigationType) => void`: callback function returning a node of type `NavigationType` when leaf is clicked (e.g. you can use it to navigate to a new page)
+- `onLeafNodeClick: (leaf: NavigationType) => void`: callback function returning a node of type `NavigationType` when leaf is clicked (e.g. you can use it to navigate to a new route)
+
+- `animationSpeedMultiplier?: number`: acts as a multiplier that adjusts how quickly or slowly the column animations are executed (e.g. 0.5 means two times faster; 3 means three times slower)
+  - default: `1`
+
+```tsx
+<AnimatedDrawerNavigation
+  backgroundColorPaletter={["gray", "yellow", "green"]}
+  fontColorPalette={["black", "black", "white"]}
+  font="Proxima Nova Regular"
+/>
+```
 
 - `backgroundColorPalette?: string[]`: an array of colors used as column background colors (any format accepted by the CSS `background-color` property)
 
@@ -201,12 +217,13 @@ export default Example
 
   - default: `["#dbd5c5", "#dbd5c5", "#1f3c4a", "#1f3c4a", "#1f3c4a", "#1f3c4a", "#1f3c4a", "#1f3c4a", "#1f3c4a", "#dbd5c5", "#1f3c4a", "#dbd5c5"]`
 
-- `font?: string`: a custom font used in the text of the navigation nodes (value is applied to the `font-family` CSS property)
+- `fontFamily?: string`: a custom font used in the navigation node text (value is applied to the `font-family` CSS property)
 
   - default: `sans-serif`
 
-- `animationSpeedMultiplier?: number`: acts as a multiplier that adjusts how quickly or slowly the column animations are executed (e.g. 0.5 means two times faster; 3 means three times slower)
-  - default: `1`
+- `fontSize?: string`: a custom font size navigation node text (value is applied to the `font-size` CSS property)
+
+  - default: `14px`
 
 ## License
 

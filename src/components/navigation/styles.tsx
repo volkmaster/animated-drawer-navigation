@@ -157,23 +157,24 @@ interface ElementProps {
   $active?: boolean
   $backgroundColorPalette: string[]
   $fontColorPalette: string[]
-  $font: string
+  $fontFamily: string
+  $fontSize: string
   $animationSpeedMultiplier: number
 }
 
 export const Element = styled.div<ElementProps>`
-  font-family: ${({ $font }) => $font};
+  font-family: ${({ $fontFamily }) => $fontFamily};
   color: ${({ $index, $fontColorPalette }) => lighten(0.1, $fontColorPalette[$index])};
   cursor: pointer;
 
-  ${({ $wide }) =>
+  ${({ $wide, $fontSize }) =>
     $wide &&
     css`
       width: 100%;
       min-height: 15px;
       margin-bottom: 6px;
       padding: 7px;
-      font-size: 14px;
+      font-size: ${$fontSize};
       line-height: 20px;
       transition:
         background-color ${timeElementHoverActive}s linear,

@@ -1,6 +1,6 @@
-import { NavigationType } from "animated-drawer-navigation"
+import { AnimatedDrawerNavigationType } from "animated-drawer-navigation"
 
-export const NAVIGATION: NavigationType = {
+export const NAVIGATION: AnimatedDrawerNavigationType = {
   id: "",
   label: "The Known World",
   children: [
@@ -19,42 +19,42 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "3",
                   label: "Eddard Stark",
-                  children: [],
+                  extra: { route: "eddard-stark" },
                 },
                 {
                   id: "4",
                   label: "Catelyn Stark",
-                  children: [],
+                  extra: { route: "catelyn-stark" },
                 },
                 {
                   id: "5",
                   label: "Sansa Stark",
-                  children: [],
+                  extra: { route: "sansa-stark" },
                 },
                 {
                   id: "6",
                   label: "Arya Stark",
-                  children: [],
+                  extra: { route: "arya-stark" },
                 },
                 {
                   id: "7",
                   label: "Bran Stark",
-                  children: [],
+                  extra: { route: "bran-stark" },
                 },
                 {
                   id: "8",
                   label: "Jon Snow",
-                  children: [],
+                  extra: { route: "jon-snow" },
                 },
                 {
                   id: "9",
                   label: "Robb Stark",
-                  children: [],
+                  extra: { route: "robb-stark" },
                 },
                 {
                   id: "10",
                   label: "Rickon Stark",
-                  children: [],
+                  extra: { route: "rickon-stark" },
                 },
               ],
             },
@@ -65,12 +65,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "12",
                   label: "Roose Bolton",
-                  children: [],
+                  extra: { route: "roose-bolton" },
                 },
                 {
                   id: "13",
                   label: "Ramsay Bolton",
-                  children: [],
+                  extra: { route: "ramsay-bolton" },
                 },
               ],
             },
@@ -81,17 +81,17 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "15",
                   label: "Jeor Mormont",
-                  children: [],
+                  extra: { route: "jeor-mormont" },
                 },
                 {
                   id: "16",
                   label: "Jorah Mormont",
-                  children: [],
+                  extra: { route: "jorah-mormont" },
                 },
                 {
                   id: "17",
                   label: "Lyanna Mormont",
-                  children: [],
+                  extra: { route: "lyanna-mormont" },
                 },
               ],
             },
@@ -108,22 +108,22 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "20",
                   label: "Hoster Tully",
-                  children: [],
+                  extra: { route: "hoster-tully" },
                 },
                 {
                   id: "21",
                   label: "Edmure Tully",
-                  children: [],
+                  extra: { route: "edmure-tully" },
                 },
                 {
                   id: "22",
                   label: "Brynden Tully",
-                  children: [],
+                  extra: { route: "brynden-tully" },
                 },
                 {
                   id: "23",
                   label: "Catelyn Stark (Tully)",
-                  children: [],
+                  extra: { route: "catelyn-stark" },
                 },
               ],
             },
@@ -134,17 +134,17 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "25",
                   label: "Walder Frey",
-                  children: [],
+                  extra: { route: "walder-frey" },
                 },
                 {
                   id: "26",
                   label: "Lothar Frey",
-                  children: [],
+                  extra: { route: "lothar-frey" },
                 },
                 {
                   id: "27",
                   label: "Black Walder",
-                  children: [],
+                  extra: { route: "black-walder" },
                 },
               ],
             },
@@ -161,17 +161,17 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "30",
                   label: "Jon Arryn",
-                  children: [],
+                  extra: { route: "jon-arryn" },
                 },
                 {
                   id: "31",
                   label: "Lysa Arryn",
-                  children: [],
+                  extra: { route: "lysa-arryn" },
                 },
                 {
                   id: "32",
                   label: "Robin Arryn",
-                  children: [],
+                  extra: { route: "robin-arryn" },
                 },
               ],
             },
@@ -182,17 +182,17 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "34",
                   label: "Yohn Royce",
-                  children: [],
+                  extra: { route: "yohn-royce" },
                 },
                 {
                   id: "35",
                   label: "Robar Royce",
-                  children: [],
+                  extra: { route: "robar-royce" },
                 },
                 {
                   id: "36",
                   label: "Waymar Royce",
-                  children: [],
+                  extra: { route: "waymar-royce" },
                 },
               ],
             },
@@ -203,12 +203,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "38",
                   label: "Eon Hunter",
-                  children: [],
+                  extra: { route: "eon-hunter" },
                 },
                 {
                   id: "39",
                   label: "Gilbert Hunter",
-                  children: [],
+                  extra: { route: "gilbert-hunter" },
                 },
               ],
             },
@@ -219,12 +219,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "41",
                   label: "Lyonel Corbray",
-                  children: [],
+                  extra: { route: "lyonel-corbray" },
                 },
                 {
                   id: "42",
                   label: "Ser Lyn Corbray",
-                  children: [],
+                  extra: { route: "ser-lyn-corbray" },
                 },
               ],
             },
@@ -241,22 +241,22 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "45",
                   label: "Tywin Lannister",
-                  children: [],
+                  extra: { route: "tywin-lannister" },
                 },
                 {
                   id: "46",
                   label: "Cersei Lannister",
-                  children: [],
+                  extra: { route: "cersei-lannister" },
                 },
                 {
                   id: "47",
                   label: "Jaime Lannister",
-                  children: [],
+                  extra: { route: "jaime-lannister" },
                 },
                 {
                   id: "48",
                   label: "Tyrion Lannister",
-                  children: [],
+                  extra: { route: "tyrion-lannister" },
                 },
               ],
             },
@@ -267,12 +267,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "50",
                   label: "Roger Reyne",
-                  children: [],
+                  extra: { route: "roger-reyne" },
                 },
                 {
                   id: "51",
                   label: "Robb Reyne",
-                  children: [],
+                  extra: { route: "robb-reyne" },
                 },
               ],
             },
@@ -283,12 +283,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "53",
                   label: "Roland Crakehall",
-                  children: [],
+                  extra: { route: "roland-crakehall" },
                 },
                 {
                   id: "54",
                   label: "Tybolt Crakehall",
-                  children: [],
+                  extra: { route: "tybolt-crakehall" },
                 },
               ],
             },
@@ -299,12 +299,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "56",
                   label: "Alfred Lefford",
-                  children: [],
+                  extra: { route: "alfred-lefford" },
                 },
                 {
                   id: "57",
                   label: "Jason Lefford",
-                  children: [],
+                  extra: { route: "jason-lefford" },
                 },
               ],
             },
@@ -321,22 +321,22 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "60",
                   label: "Mace Tyrell",
-                  children: [],
+                  extra: { route: "mace-tyrell" },
                 },
                 {
                   id: "61",
                   label: "Olenna Tyrell",
-                  children: [],
+                  extra: { route: "olenna-tyrell" },
                 },
                 {
                   id: "62",
                   label: "Margaery Tyrell",
-                  children: [],
+                  extra: { route: "margaery-tyrell" },
                 },
                 {
                   id: "63",
                   label: "Loras Tyrell",
-                  children: [],
+                  extra: { route: "loras-tyrell" },
                 },
               ],
             },
@@ -347,17 +347,17 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "65",
                   label: "Leyton Hightower",
-                  children: [],
+                  extra: { route: "leyton-hightower" },
                 },
                 {
                   id: "66",
                   label: "Baelor Hightower",
-                  children: [],
+                  extra: { route: "baelor-hightower" },
                 },
                 {
                   id: "67",
                   label: "Garth Hightower",
-                  children: [],
+                  extra: { route: "garth-hightower" },
                 },
               ],
             },
@@ -368,12 +368,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "69",
                   label: "Axell Florent",
-                  children: [],
+                  extra: { route: "axell-florent" },
                 },
                 {
                   id: "70",
                   label: "Melessa Florent (Tarly)",
-                  children: [],
+                  extra: { route: "melessa-florent" },
                 },
               ],
             },
@@ -384,17 +384,17 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "72",
                   label: "Paxter Redwyne",
-                  children: [],
+                  extra: { route: "paxter-redwyne" },
                 },
                 {
                   id: "73",
                   label: "Hobber Redwyne",
-                  children: [],
+                  extra: { route: "hobber-redwyne" },
                 },
                 {
                   id: "74",
                   label: "Horace Redwyne",
-                  children: [],
+                  extra: { route: "horace-redwyne" },
                 },
               ],
             },
@@ -405,27 +405,27 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "76",
                   label: "Randyl Tarly",
-                  children: [],
+                  extra: { route: "randyl-tarly" },
                 },
                 {
                   id: "77",
                   label: "Melessa Tarly",
-                  children: [],
+                  extra: { route: "melessa-tarly" },
                 },
                 {
                   id: "78",
                   label: "Samwell Tarly",
-                  children: [],
+                  extra: { route: "samwell-tarly" },
                 },
                 {
                   id: "79",
                   label: "Dickon Tarly",
-                  children: [],
+                  extra: { route: "dickon-tarly" },
                 },
                 {
                   id: "80",
                   label: "Talla Tarly",
-                  children: [],
+                  extra: { route: "talla-tarly" },
                 },
               ],
             },
@@ -442,22 +442,22 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "83",
                   label: "Oberyn Martell",
-                  children: [],
+                  extra: { route: "oberyn-martell" },
                 },
                 {
                   id: "84",
                   label: "Ellaria Sand",
-                  children: [],
+                  extra: { route: "ellaria-sand" },
                 },
                 {
                   id: "85",
                   label: "Trystane Martell",
-                  children: [],
+                  extra: { route: "trystane-martell" },
                 },
                 {
                   id: "86",
                   label: "Doran Martell",
-                  children: [],
+                  extra: { route: "doran-martell" },
                 },
               ],
             },
@@ -468,17 +468,17 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "88",
                   label: "Arthur Dayne",
-                  children: [],
+                  extra: { route: "arthur-dayne" },
                 },
                 {
                   id: "89",
                   label: "Ashara Dayne",
-                  children: [],
+                  extra: { route: "ashara-dayne" },
                 },
                 {
                   id: "90",
                   label: "Edric Dayne",
-                  children: [],
+                  extra: { route: "edric-dayne" },
                 },
               ],
             },
@@ -489,12 +489,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "92",
                   label: "Anders Yronwood",
-                  children: [],
+                  extra: { route: "anders-yronwood" },
                 },
                 {
                   id: "93",
                   label: "Archibald Yronwood",
-                  children: [],
+                  extra: { route: "archibald-yronwood" },
                 },
               ],
             },
@@ -505,12 +505,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "95",
                   label: "Franklyn Fowler",
-                  children: [],
+                  extra: { route: "franklyn-fowler" },
                 },
                 {
                   id: "96",
                   label: "Nymella Fowler",
-                  children: [],
+                  extra: { route: "nymella-fowler" },
                 },
               ],
             },
@@ -527,37 +527,37 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "99",
                   label: "Robert Baratheon",
-                  children: [],
+                  extra: { route: "robert-baratheon" },
                 },
                 {
                   id: "100",
                   label: "Stannis Baratheon",
-                  children: [],
+                  extra: { route: "stannis-baratheon" },
                 },
                 {
                   id: "101",
                   label: "Renly Baratheon",
-                  children: [],
+                  extra: { route: "renly-baratheon" },
                 },
                 {
                   id: "102",
                   label: "Shireen Baratheon",
-                  children: [],
+                  extra: { route: "shireen-baratheon" },
                 },
                 {
                   id: "103",
                   label: "Joffrey Baratheon",
-                  children: [],
+                  extra: { route: "joffrey-baratheon" },
                 },
                 {
                   id: "104",
                   label: "Tommen Baratheon",
-                  children: [],
+                  extra: { route: "tommen-baratheon" },
                 },
                 {
                   id: "105",
                   label: "Myrcella Baratheon",
-                  children: [],
+                  extra: { route: "myrcella-baratheon" },
                 },
               ],
             },
@@ -568,12 +568,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "107",
                   label: "Brienne of Tarth",
-                  children: [],
+                  extra: { route: "brienne-of-tarth" },
                 },
                 {
                   id: "108",
                   label: "Selwyn Tarth",
-                  children: [],
+                  extra: { route: "selwyn-tarth" },
                 },
               ],
             },
@@ -584,12 +584,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "110",
                   label: "Bryce Caron",
-                  children: [],
+                  extra: { route: "bryce-caron" },
                 },
                 {
                   id: "111",
                   label: "Edwyn Caron",
-                  children: [],
+                  extra: { route: "edwyn-caron" },
                 },
               ],
             },
@@ -600,7 +600,7 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "113",
                   label: "Beric Dondarrion",
-                  children: [],
+                  extra: { route: "beric-dondarrion" },
                 },
               ],
             },
@@ -617,17 +617,17 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "116",
                   label: "Balon Greyjoy",
-                  children: [],
+                  extra: { route: "balon-greyjoy" },
                 },
                 {
                   id: "117",
                   label: "Theon Greyjoy",
-                  children: [],
+                  extra: { route: "theon-greyjoy" },
                 },
                 {
                   id: "118",
                   label: "Yara Greyjoy",
-                  children: [],
+                  extra: { route: "yara-greyjoy" },
                 },
               ],
             },
@@ -638,12 +638,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "120",
                   label: "Rodrik Harlaw",
-                  children: [],
+                  extra: { route: "rodrik-harlaw" },
                 },
                 {
                   id: "121",
                   label: "Asha Greyjoy (Harlaw)",
-                  children: [],
+                  extra: { route: "asha-greyjoy" },
                 },
               ],
             },
@@ -654,12 +654,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "123",
                   label: "Sawane Botley",
-                  children: [],
+                  extra: { route: "sawane-botley" },
                 },
                 {
                   id: "124",
                   label: "Tristifer Botley",
-                  children: [],
+                  extra: { route: "tristifer-botley" },
                 },
               ],
             },
@@ -682,17 +682,17 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "128",
                   label: "Daenerys Targaryen",
-                  children: [],
+                  extra: { route: "daenerys-targaryen" },
                 },
                 {
                   id: "129",
                   label: "Viserys Targaryen",
-                  children: [],
+                  extra: { route: "viserys-targaryen" },
                 },
                 {
                   id: "130",
                   label: "Aemon Targaryen",
-                  children: [],
+                  extra: { route: "aemon-targaryen" },
                 },
               ],
             },
@@ -709,12 +709,12 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "133",
                   label: "Drogo",
-                  children: [],
+                  extra: { route: "drogo" },
                 },
                 {
                   id: "134",
                   label: "Rakharo",
-                  children: [],
+                  extra: { route: "rakharo" },
                 },
               ],
             },
@@ -731,7 +731,7 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "137",
                   label: "Xaro Xhoan Daxos",
-                  children: [],
+                  extra: { route: "xaro-xhoan-daxos" },
                 },
               ],
             },
@@ -748,7 +748,7 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "140",
                   label: "Jaqen H'ghar",
-                  children: [],
+                  extra: { route: "jaqen-h'ghar" },
                 },
               ],
             },
@@ -765,7 +765,7 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "143",
                   label: "Larra Rogare",
-                  children: [],
+                  extra: { route: "larra-rogaire" },
                 },
               ],
             },
@@ -782,7 +782,7 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "147",
                   label: "Illyrio Mopatis",
-                  children: [],
+                  extra: { route: "illyrio-mopatis" },
                 },
               ],
             },
@@ -799,7 +799,7 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "150",
                   label: "Daario Naharis",
-                  children: [],
+                  extra: { route: "daario-naharis" },
                 },
               ],
             },
@@ -816,7 +816,7 @@ export const NAVIGATION: NavigationType = {
                 {
                   id: "153",
                   label: "Nyessos Vhassar",
-                  children: [],
+                  extra: { route: "nyessos-vhassar" },
                 },
               ],
             },

@@ -2511,9 +2511,9 @@ ajv@^8.0.0, ajv@^8.6.0, ajv@^8.9.0:
     require-from-string "^2.0.2"
 
 animated-drawer-navigation@latest:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/animated-drawer-navigation/-/animated-drawer-navigation-1.0.6.tgz#b0c5d8c6af7791bf2c37094dc0e2933f576577c8"
-  integrity sha512-IAFsk4AqgNirlWidC1oBUlshIrMQtb5lOR9AAiYzNvKaLTbWMlBTxbBqbT6P1f+g/zGoKiSfYhozrOu+TKTEgA==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/animated-drawer-navigation/-/animated-drawer-navigation-1.0.7.tgz#84543658b159df94a8a3e184802ca26af8026a21"
+  integrity sha512-/LgcqA/0SmDHtOUuTq388+9aodlfH2qgC1IL2+VNINxPpcv+7Ea2b/o+JdmQdQuJxZaugzo7hAWm+QVEBGhOHQ==
 
 ansi-escapes@^4.2.1, ansi-escapes@^4.3.1:
   version "4.3.2"

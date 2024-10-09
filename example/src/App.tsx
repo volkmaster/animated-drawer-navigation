@@ -1,30 +1,32 @@
 import { useState } from "react"
-import AnimatedDrawerNavigation, { NavigationType } from "animated-drawer-navigation"
-import { Wrapper, Content, Title, Subtitle, Description } from "./styles"
+import {
+  AnimatedDrawerNavigationProvider,
+  AnimatedDrawerNavigation,
+  AnimatedDrawerNavigationType,
+} from "animated-drawer-navigation"
 import { NAVIGATION, CHARACTERS } from "./data/mock"
+import { Wrapper, Content, Title, Subtitle, Description } from "./styles"
 
 const App = () => {
-  const [leaf, setLeaf] = useState<NavigationType | null>(null)
-  const onLeafClick = (leaf: NavigationType) => {
-    setLeaf(leaf)
+  const [leafNode, setLeafNode] = useState<AnimatedDrawerNavigationType | null>(null)
+  const onLeafNodeClick = (node: AnimatedDrawerNavigationType) => {
+    setLeafNode(node)
   }
 
   return (
-    <Wrapper>
-      <AnimatedDrawerNavigation
-        navigation={NAVIGATION}
-        onLeafClick={onLeafClick}
-        font="Proxima Nova Regular"
-      />
-      <Content>
-        <Title>Game of Thrones</Title>
-        {leaf && <Character {...leaf} />}
-      </Content>
-    </Wrapper>
+    <AnimatedDrawerNavigationProvider navigation={NAVIGATION} onLeafNodeClick={onLeafNodeClick}>
+      <Wrapper>
+        <AnimatedDrawerNavigation fontFamily="Proxima Nova Regular" />
+        <Content>
+          <Title>Game of Thrones</Title>
+          {leafNode && <Character {...leafNode} />}
+        </Content>
+      </Wrapper>
+    </AnimatedDrawerNavigationProvider>
   )
 }
 
-const Character = ({ id, label }: NavigationType) => {
+const Character = ({ id, label }: AnimatedDrawerNavigationType) => {
   const character = id in CHARACTERS && CHARACTERS[id]
   return (
     <>

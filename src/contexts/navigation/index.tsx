@@ -7,7 +7,8 @@ export { ColumnType } from "./useColumns"
 export interface NavigationType {
   id: string
   label: string
-  children: NavigationType[]
+  extra?: any
+  children?: NavigationType[]
 }
 
 export interface StatisticsType {
@@ -45,6 +46,7 @@ interface NavigationContextType {
   applyPathFromLeaf: (id: string) => void
   leaf: string
   setLeaf: (id: string) => void
+  animationSpeedMultiplier: number
 }
 
 const NavigationContext = createContext<NavigationContextType>({
@@ -66,19 +68,20 @@ const NavigationContext = createContext<NavigationContextType>({
   applyPathFromLeaf: () => {},
   leaf: "",
   setLeaf: () => {},
+  animationSpeedMultiplier: 1,
 })
 
 interface Props {
   navigation: NavigationType | null
-  onLeafClick: (leaf: NavigationType) => void
-  animationSpeedMultiplier: number
+  onLeafNodeClick: (node: NavigationType) => void
+  animationSpeedMultiplier?: number
   children: React.ReactNode
 }
 
 const NavigationProvider = ({
   navigation,
-  onLeafClick,
-  animationSpeedMultiplier,
+  onLeafNodeClick,
+  animationSpeedMultiplier = 1,
   children,
 }: Props) => {
   const storage = useLocalStorage()
@@ -89,7 +92,7 @@ const NavigationProvider = ({
   const [pathToLeafMap, setPathToLeafMap] = useState<PathToLeafMapType>({})
 
   const buildNavigationMaps = useCallback((parent: string, node: NavigationType) => {
-    const { id, children } = node
+    const { id, children = [] } = node
 
     if (id) {
       setIdToNodeMap((prev) => ({ ...prev, [id]: node }))
@@ -123,7 +126,7 @@ const NavigationProvider = ({
 
   const updateStatistics = useCallback((navigation: NavigationType, statistics: StatisticsType) => {
     const id = navigation.id
-    const children = navigation.children
+    const children = navigation.children || []
 
     if (id && !(id in statistics) && children.length === 0) {
       statistics[id] = 0
@@ -173,7 +176,7 @@ const NavigationProvider = ({
     incrementStatistics,
     idToNodeMap,
     pathToLeafMap,
-    onLeafClick,
+    onLeafNodeClick,
     animationSpeedMultiplier,
   })
 
@@ -197,6 +200,7 @@ const NavigationProvider = ({
       applyPathFromLeaf,
       leaf,
       setLeaf,
+      animationSpeedMultiplier,
     }),
     [
       navigation,
@@ -217,6 +221,7 @@ const NavigationProvider = ({
       applyPathFromLeaf,
       leaf,
       setLeaf,
+      animationSpeedMultiplier,
     ],
   )
 
