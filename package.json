@@ -1,6 +1,6 @@
 {
   "name": "animated-drawer-navigation",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "An animated multi-level drawer navigation for React.",
   "author": {
     "name": "Ziga Vucko",
@@ -24,24 +24,17 @@
     "publish": "npm publish"
   },
   "peerDependencies": {
-    "lodash.pickby": "^4.6.0",
-    "polished": "^4.3.1",
     "react": "^18.3.1",
-    "styled-components": "^6.1.13"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.5.0",
-    "@testing-library/react": "^16.0.1",
-    "@testing-library/user-event": "^14.5.2",
-    "@types/jest": "^29.5.13",
+    "@babel/plugin-proposal-unicode-property-regex": "^7.18.6",
     "@types/lodash.pickby": "^4.6.9",
     "@types/node": "^22.7.4",
     "@types/react": "^18.3.10",
     "@types/react-dom": "^18.3.0",
     "@types/styled-components": "^5.1.34",
-    "animated-drawer-navigation": "^1.0.4",
     "cross-env": "^7.0.2",
-    "feather-icons-react": "^0.7.0",
     "gh-pages": "^6.1.1",
     "lodash.pickby": "^4.6.0",
     "microbundle-crl": "^0.13.10",
@@ -57,7 +50,13 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@babel/plugin-proposal-unicode-property-regex": "^7.18.6"
-  }
+  "keywords": [
+    "react",
+    "reactjs",
+    "react-component",
+    "drawer-navigation",
+    "drawer navigation",
+    "navigation",
+    "reuseable-component"
+  ]
 }
