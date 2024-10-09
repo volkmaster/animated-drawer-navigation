@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.4c35d4a2.css",
-    "main.js": "./static/js/main.a1bab7ac.js",
+    "main.js": "./static/js/main.aeee22fb.js",
     "static/media/Proxima-Nova-Regular.svg": "./static/media/Proxima-Nova-Regular.8f64c43ac338ee6d036b.svg",
     "static/media/Proxima-Nova-Regular.eot": "./static/media/Proxima-Nova-Regular.c23787c599b4dd817042.eot",
     "static/media/Proxima-Nova-Regular.ttf": "./static/media/Proxima-Nova-Regular.db098dc77c7aafe660e5.ttf",
@@ -9,10 +9,10 @@
     "static/media/Proxima-Nova-Regular.woff2": "./static/media/Proxima-Nova-Regular.c4c3616c5577f9e7ef87.woff2",
     "index.html": "./index.html",
     "main.4c35d4a2.css.map": "./static/css/main.4c35d4a2.css.map",
-    "main.a1bab7ac.js.map": "./static/js/main.a1bab7ac.js.map"
+    "main.aeee22fb.js.map": "./static/js/main.aeee22fb.js.map"
   },
   "entrypoints": [
     "static/css/main.4c35d4a2.css",
-    "static/js/main.a1bab7ac.js"
+    "static/js/main.aeee22fb.js"
   ]
 }
