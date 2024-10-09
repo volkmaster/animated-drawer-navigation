@@ -186,7 +186,7 @@ const useColumns = ({
       for (let i = 0; i < maxColumns; i++) {
         columns[i] = {
           id: "",
-          label: i === 0 ? "The Known World" : "",
+          label: i === 0 ? navigation.label : "",
           children: i === 0 ? navigation.children || [] : [],
           states: {
             hideWiden: false,
